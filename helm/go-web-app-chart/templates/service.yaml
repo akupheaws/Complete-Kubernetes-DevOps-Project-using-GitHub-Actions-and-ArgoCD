@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-app          # or keep "my-app-service" if you prefer
+  namespace: default
+  labels:
+    app: go-web-app         # optional; labels here don’t affect selection
+spec:
+  type: ClusterIP
+  selector:
+    app: go-web-app         # MUST match your pod labels
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080        # set to your containerPort
